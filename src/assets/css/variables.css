@@ -1,5 +1,0 @@
-:root {
-  --book-height: 90vh;
-  --book-width: calc((var(--book-height)*2)/1.4);
-  --book-depth: 10vh;
-}
