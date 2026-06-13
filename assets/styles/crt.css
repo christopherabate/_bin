@@ -1,0 +1,108 @@
+@import "./_reset.css";
+@import "./_fonts.css";
+@import "./_variables.css";
+
+.crt {
+  height: 100vh;
+  width: 100vw;
+  padding: 4vh;
+  overflow: scroll;
+  position: relative;
+  color:  #fff;
+  background-color: #222;
+  clip-path: inset(0 round 5vh);
+
+  --_r: clamp(0%, 5vh, 20vh);
+  --_v: calc(var(--_r)*(1 - sqrt(2)/4));
+  --_p: calc(var(--_v) - var(--_r)/2);
+
+  clip-path: shape(
+    from var(--_v) var(--_p),
+    curve to 50% 0 with var(--_r) 0,
+    curve to calc(100% - var(--_v)) var(--_p) with calc(100% - var(--_r)) 0,
+    curve to calc(100% - var(--_p)) var(--_v) with calc(100% - 2*var(--_p)) calc(2*var(--_p)),
+    curve to 100% 50% with 100% var(--_r),
+    curve to calc(100% - var(--_p)) calc(100% - var(--_v)) with 100% calc(100% - var(--_r)),
+    curve to calc(100% - var(--_v)) calc(100% - var(--_p)) with calc(100% - 2*var(--_p)) calc(100% - 2*var(--_p)),
+    curve to 50% 100% with calc(100% - var(--_r)) 100%,
+    curve to var(--_v) calc(100% - var(--_p)) with var(--_r) 100%,
+    curve to var(--_p) calc(100% - var(--_v)) with calc(2*var(--_p)) calc(100% - 2*var(--_p)),
+    curve to 0 50% with 0 calc(100% - var(--_r)),
+    curve to var(--_p) var(--_v) with 0 var(--_r),
+    curve to var(--_v) var(--_p) with calc(2*var(--_p)) calc(2*var(--_p))
+  );
+}
+
+.crt::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    /* vignette */radial-gradient(ellipse closest-side, transparent 100%, black 250%),
+    /* R */radial-gradient(100% 100% at 100% 0, transparent, rgb(255 0 0 / .05) 100%),
+    /* V */radial-gradient(100% 100% at 50% 100%, transparent, rgb(0 255 0 / .05) 100%),
+    /* B */radial-gradient(100% 100% at 0 0, transparent, rgb(0 0 255 / .05) 100%);
+}
+
+.crt::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  background:
+    /* scanlines */linear-gradient(to bottom, transparent 50%, rgb(0 0 0 / .05) 50%) 0 0 / 100% 8px repeat;
+}
+
+.flicker  {
+  text-shadow:
+    2px 0 2px rgba(0, 255, 255, .8), /* C */
+    -2px 0 2px rgba(255, 0, 255, .8), /* M */
+    -2px -2px 2px rgba(255, 255, 0, .8); /* Y */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .flicker {
+    animation:
+      flicker calc(1s/30) infinite alternate;
+  }
+  .crt::after {
+    animation:
+      scanlines 30s linear infinite;
+  }
+}
+
+@keyframes scanlines {
+  from { background-position: 0 0; }
+  to { background-position: 0 100%; }
+}
+
+@keyframes flicker {
+  from {
+    text-shadow:
+      2px 0 2px rgba(0, 255, 255, .8), /* C */
+      -4px 0 2px rgba(255, 0, 255, .8), /* M */
+      -2px -2px 2px rgba(255, 255, 0, .8); /* Y */
+  }
+  to {
+    text-shadow:
+      4px 0px 2px rgba(0, 255, 255, .8), /* C */
+      -2px 0px 2px rgba(255, 0, 255, .8), /* M */
+      2px 2px 2px rgba(255, 255, 0, .8); /* Y */
+  }
+}
+
+h1 {
+  font-family: TimesNewPixel;
+  font-size: 10vh;
+}
+
+h2 {
+  font-family: NESPixel;
+  font-size: 10vh;
+}
+p {
+  font-family: HelvetiPixel;
+  font-size: 4vh;
+}
