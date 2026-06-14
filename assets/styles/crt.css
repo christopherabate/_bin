@@ -3,7 +3,7 @@
 @import "variables.css";
 
 body {
-  min-height: 100dvh;
+  height: 100dvh;
 }
 
 .crt {
