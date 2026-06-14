@@ -1,6 +1,6 @@
-@import "./_reset.css";
-@import "./_fonts.css";
-@import "./_variables.css";
+@import "_reset.css";
+@import "_fonts.css";
+@import "_variables.css";
 
 .crt {
   height: 100vh;
