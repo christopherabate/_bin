@@ -64,11 +64,11 @@
 @media (prefers-reduced-motion: no-preference) {
   .flicker {
     animation:
-      flicker calc(1s/30) infinite alternate;
+      flicker calc(1s/12) infinite alternate;
   }
   .crt::after {
     animation:
-      scanlines 30s linear infinite;
+      scanlines 20s linear infinite;
   }
 }
 
