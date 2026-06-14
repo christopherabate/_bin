@@ -2,10 +2,6 @@
 @import "fonts.css";
 @import "variables.css";
 
-body {
-  height: 100dvh;
-}
-
 .crt {
   height: 100dvh;
   padding: 4vh;
