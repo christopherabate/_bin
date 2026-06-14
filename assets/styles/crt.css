@@ -58,7 +58,7 @@
   text-shadow:
     2px 0 2px rgba(0, 255, 255, .5), /* C */
     -2px 0 2px rgba(255, 0, 255, .5), /* M */
-    -2px -2px 2px rgba(255, 255, 0, .5); /* Y */
+    -2px -1px 2px rgba(255, 255, 0, .5); /* Y */
 }
 
 @media (prefers-reduced-motion: no-preference) {
