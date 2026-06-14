@@ -2,9 +2,14 @@
 @import "fonts.css";
 @import "variables.css";
 
+body {
+  min-height: 100dvh;
+  min-width: 100dvw
+}
+
 .crt {
-  height: 100dvh;
-  width: 100dvw;
+  height: 100%;
+  width: 100%;
   padding: 4vh;
   overflow: scroll;
   position: relative;
