@@ -94,14 +94,14 @@
 
 h1 {
   font-family: TimesNewPixel;
-  font-size: max(24px, 4vw);
+  font-size: max(48px, 6vw);
 }
 
 h2 {
   font-family: NESPixel;
-  font-size: max(24px, 4vw);
+  font-size: max(48px, 6vw);
 }
 p {
   font-family: HelvetiPixel;
-  font-size: max(16px, 2vw);
+  font-size: max(32px, 4vw);
 }
