@@ -56,9 +56,9 @@
 
 .flicker  {
   text-shadow:
-    2px 0 2px rgba(0, 255, 255, .8), /* C */
-    -2px 0 2px rgba(255, 0, 255, .8), /* M */
-    -2px -2px 2px rgba(255, 255, 0, .8); /* Y */
+    2px 0 2px rgba(0, 255, 255, .5), /* C */
+    -2px 0 2px rgba(255, 0, 255, .5), /* M */
+    -2px -2px 2px rgba(255, 255, 0, .5); /* Y */
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -80,15 +80,15 @@
 @keyframes flicker {
   from {
     text-shadow:
-      2px 0 2px rgba(0, 255, 255, .8), /* C */
-      -4px 0 2px rgba(255, 0, 255, .8), /* M */
-      -2px -2px 2px rgba(255, 255, 0, .8); /* Y */
+      2px 0 2px rgba(0, 255, 255, .5), /* C */
+      -4px 0 2px rgba(255, 0, 255, .5), /* M */
+      -2px -2px 2px rgba(255, 255, 0, .5); /* Y */
   }
   to {
     text-shadow:
-      4px 0px 2px rgba(0, 255, 255, .8), /* C */
-      -2px 0px 2px rgba(255, 0, 255, .8), /* M */
-      2px 2px 2px rgba(255, 255, 0, .8); /* Y */
+      4px 0px 2px rgba(0, 255, 255, .5), /* C */
+      -2px 0px 2px rgba(255, 0, 255, .5), /* M */
+      2px 2px 2px rgba(255, 255, 0, .5); /* Y */
   }
 }
 
