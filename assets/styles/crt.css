@@ -8,14 +8,18 @@
   position: relative;
   overflow-y: auto;
   color:  #fff;
-  background-color: #222;
-  clip-path: inset(0 round 5vh);
-
+  background:
+    /* vignette */ radial-gradient(ellipse closest-side, transparent 100%, black 250%),
+    /* R */ radial-gradient(100% 100% at 100% 100%, transparent, rgb(255 0 0 / .1) 100%),
+    /* G */ radial-gradient(100% 100% at 0 100%, transparent, rgb(0 255 0 / .1) 100%),
+    /* B */ radial-gradient(100% 100% at 0 0, transparent, rgb(0 0 255 / .1) 100%),
+    /* White */ radial-gradient(100% 100% at 100% 0, transparent, rgb(255 255 255 / .1) 100%),
+    /* Black */ #000;
+  /* circle clip fallback */ clip-path: inset(0 round 5vh);
   --_r: clamp(0%, 5vh, 20vh);
   --_v: calc(var(--_r)*(1 - sqrt(2)/4));
   --_p: calc(var(--_v) - var(--_r)/2);
-
-  clip-path: shape(
+  /* squircle clip */ clip-path: shape(
     from var(--_v) var(--_p),
     curve to 50% 0 with var(--_r) 0,
     curve to calc(100% - var(--_v)) var(--_p) with calc(100% - var(--_r)) 0,
@@ -37,11 +41,7 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background:
-    /* vignette */radial-gradient(ellipse closest-side, transparent 100%, black 250%),
-    /* R */radial-gradient(100% 100% at 100% 0, transparent, rgb(255 0 0 / .05) 100%),
-    /* V */radial-gradient(100% 100% at 50% 100%, transparent, rgb(0 255 0 / .05) 100%),
-    /* B */radial-gradient(100% 100% at 0 0, transparent, rgb(0 0 255 / .05) 100%);
+  background: /* beam */ radial-gradient(ellipse 100% 2px at center, rgb(255 255 255 / .1), transparent 50%);
 }
 
 .crt::after {
@@ -50,58 +50,57 @@
   inset: 0;
   pointer-events: none;
   mix-blend-mode: multiply;
-  background:
-    /* scanlines */linear-gradient(to bottom, transparent 50%, rgb(0 0 0 / .05) 50%) 0 0 / 100% 8px repeat;
+  background: /* scanlines */ linear-gradient(to bottom, transparent 50%, rgb(0 0 0 / .1) 50%) 0 0 / 100% 2px repeat;
 }
 
 .flicker  {
   text-shadow:
-    2px 0 2px rgba(0, 255, 255, .5), /* C */
-    -2px 0 2px rgba(255, 0, 255, .5), /* M */
-    -2px -1px 2px rgba(255, 255, 0, .5); /* Y */
+    /* C */ .2em 0 1px rgba(0, 255, 255, .2),
+    /* M */ -2em 0 1px rgba(255, 0, 255, .2),
+    /* Y */ -2em -.1em 1px rgba(255, 255, 0, .2);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .flicker {
-    animation:
-      flicker calc(1s/12) infinite alternate;
-  }
-  .crt::after {
-    animation:
-      scanlines 20s linear infinite;
-  }
+  .flicker { animation: flicker calc(1s/12) infinite alternate; }
+  .crt::before { animation: beam 2s linear infinite; }
+  .crt::after { animation: scanlines calc(1s/4) linear infinite; }
+}
+
+@keyframes beam {
+  from { transform: translateY(50%); }
+  to { transform: translateY(-50%); }
 }
 
 @keyframes scanlines {
   from { background-position: 0 0; }
-  to { background-position: 0 100%; }
+  to { background-position: 0 2px; }
 }
 
 @keyframes flicker {
   from {
     text-shadow:
-      2px 0 2px rgba(0, 255, 255, .5), /* C */
-      -4px 0 2px rgba(255, 0, 255, .5), /* M */
-      -2px -2px 2px rgba(255, 255, 0, .5); /* Y */
+      /* C */ .1rem 0 1px rgba(0, 255, 255, .5),
+      /* M */ -.2rem 0 1px rgba(255, 0, 255, .5),
+      /* Y */ -.1rem -.1rem 1px rgba(255, 255, 0, .5);
   }
   to {
     text-shadow:
-      4px 0px 2px rgba(0, 255, 255, .5), /* C */
-      -2px 0px 2px rgba(255, 0, 255, .5), /* M */
-      2px 2px 2px rgba(255, 255, 0, .5); /* Y */
+      /* C */ .2rem 0 1px rgba(0, 255, 255, .5),
+      /* M */ -.1rem 0 1px rgba(255, 0, 255, .5),
+      /* Y */ .1rem .1rem 1px rgba(255, 255, 0, .5);
   }
 }
 
 h1 {
   font-family: TimesNewPixel;
-  font-size: 8vw;
+  font-size: 6rem;
 }
 
 h2 {
   font-family: NESPixel;
-  font-size: 6vw;
+  font-size: 4rem;
 }
 p {
   font-family: HelvetiPixel;
-  font-size: 4vw;
+  font-size: 2rem;
 }
