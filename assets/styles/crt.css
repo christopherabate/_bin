@@ -10,10 +10,10 @@
   color:  #fff;
   background:
     /* vignette */ radial-gradient(ellipse closest-side, transparent 100%, black 250%),
-    /* R */ radial-gradient(100% 100% at 100% 100%, transparent, rgb(255 0 0 / .1) 100%),
-    /* G */ radial-gradient(100% 100% at 0 100%, transparent, rgb(0 255 0 / .1) 100%),
-    /* B */ radial-gradient(100% 100% at 0 0, transparent, rgb(0 0 255 / .1) 100%),
-    /* White */ radial-gradient(100% 100% at 100% 0, transparent, rgb(255 255 255 / .1) 100%),
+    /* R */ radial-gradient(100% 100% at 0 0, transparent, rgb(255 0 0 / .05) 100%),
+    /* G */ radial-gradient(100% 100% at 0 100%, transparent, rgb(0 255 0 / .05) 100%),
+    /* B */ radial-gradient(100% 100% at 100% 0, transparent, rgb(0 0 255 / .05) 100%),
+    /* White */ radial-gradient(100% 100% at 100% 100%, transparent, rgb(255 255 255 / .05) 100%),
     /* Black */ #000;
   /* circle clip fallback */ clip-path: inset(0 round 5vh);
   --_r: clamp(0%, 5vh, 20vh);
@@ -41,7 +41,7 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: /* beam */ radial-gradient(ellipse 100% 2px at center, rgb(255 255 255 / .1), transparent 50%);
+  background: /* beam */ radial-gradient(ellipse 100% 2px at center, rgb(255 255 255 / .2), transparent 50%);
 }
 
 .crt::after {
