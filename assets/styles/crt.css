@@ -110,66 +110,63 @@ button {
   font-family: NESPixel;
   font-size: 2rem;
   border: 0;
-  margin: .5rem .25rem;
+  margin: .36em .12em;
   color: white;
   background-color: color-mix(in srgb, var(--color), white 20%);
   text-shadow:
-    0 .05rem color-mix(in srgb, var(--color), black 25%),
-    0 .10rem color-mix(in srgb, var(--color), black 25%),
-    0 .15rem color-mix(in srgb, var(--color), black 25%),
-    0 .20rem color-mix(in srgb, var(--color), black 25%),
-    0 .25rem color-mix(in srgb, var(--color), black 25%);
+    0 .06em color-mix(in srgb, var(--color), black 25%),
+    0 .12em color-mix(in srgb, var(--color), black 25%);
   box-shadow:
-    0 .25rem color-mix(in srgb, var(--color), black 10%),
-    0 -.25rem color-mix(in srgb, var(--color), black 10%),
-    .25rem 0 color-mix(in srgb, var(--color), black 10%),
-    -.25rem 0 color-mix(in srgb, var(--color), black 10%),
-    0 .75rem color-mix(in srgb, var(--color), black 50%),
-    .25rem .5rem color-mix(in srgb, var(--color), black 50%),
-    -.25rem .5rem color-mix(in srgb, var(--color), black 50%),
-    0 1rem rgb(from var(--color) r g b / .1),
-    .25rem .75rem rgb(from var(--color) r g b / .1),
-    -.25rem .75rem rgb(from var(--color) r g b / .1),
-    .5rem .25em rgb(from var(--color) r g b / .1),
-    -.5rem .25em rgb(from var(--color) r g b / .1),
-    inset 0 .25rem color-mix(in srgb, var(--color), white 50%);
+    0 .12em color-mix(in srgb, var(--color), black 10%),
+    0 -.12em color-mix(in srgb, var(--color), black 10%),
+    .12em 0 color-mix(in srgb, var(--color), black 10%),
+    -.12em 0 color-mix(in srgb, var(--color), black 10%),
+    0 .36em color-mix(in srgb, var(--color), black 50%),
+    .12em .24em color-mix(in srgb, var(--color), black 50%),
+    -.12em .24em color-mix(in srgb, var(--color), black 50%),
+    0 .48em rgb(from var(--color) r g b / .1),
+    .12em .36em rgb(from var(--color) r g b / .1),
+    -.12em .36em rgb(from var(--color) r g b / .1),
+    .24em .12em rgb(from var(--color) r g b / .1),
+    -.24em .12em rgb(from var(--color) r g b / .1),
+    inset 0 .12em color-mix(in srgb, var(--color), white 50%);
   cursor: pointer;
 }
 
 button:not(:disabled):hover,
 button:not(:disabled):focus {
-  transform: translateY(.25rem);
+  transform: translateY(.12em);
   background-color: var(--color);
   box-shadow:
-    0 .25rem color-mix(in srgb, var(--color), black 10%),
-    0 -.25rem color-mix(in srgb, var(--color), black 10%),
-    .25rem 0 color-mix(in srgb, var(--color), black 10%),
-    -.25rem 0 color-mix(in srgb, var(--color), black 10%),
-    0 .5rem color-mix(in srgb, var(--color), black 50%),
-    .25rem .25rem color-mix(in srgb, var(--color), black 50%),
-    -.25rem .25rem color-mix(in srgb, var(--color), black 50%),
-    0 .75rem rgb(from var(--color) r g b / .1),
-    .25rem .5rem rgb(from var(--color) r g b / .1),
-    -.25rem .5rem rgb(from var(--color) r g b / .1),
-    .5rem .125em rgb(from var(--color) r g b / .1),
-    -.5rem .125em rgb(from var(--color) r g b / .1),
-    inset 0 .25rem color-mix(in srgb, var(--color), white 20%);
+    0 .12em color-mix(in srgb, var(--color), black 10%),
+    0 -.12em color-mix(in srgb, var(--color), black 10%),
+    .12em 0 color-mix(in srgb, var(--color), black 10%),
+    -.12em 0 color-mix(in srgb, var(--color), black 10%),
+    0 .24em color-mix(in srgb, var(--color), black 50%),
+    .12em .12em color-mix(in srgb, var(--color), black 50%),
+    -.12em .12em color-mix(in srgb, var(--color), black 50%),
+    0 .36em rgb(from var(--color) r g b / .1),
+    .12em .24em rgb(from var(--color) r g b / .1),
+    -.12em .24em rgb(from var(--color) r g b / .1),
+    .24em .06em rgb(from var(--color) r g b / .1),
+    -.24em .06em rgb(from var(--color) r g b / .1),
+    inset 0 .12em color-mix(in srgb, var(--color), white 20%);
   cursor: pointer;
 }
 
 button:not(:disabled):active {
-  transform: translateY(.5rem);
+  transform: translateY(.24em);
   background-color: color-mix(in srgb, var(--color), black 10%);
   box-shadow:
-    0 .25rem color-mix(in srgb, var(--color), black 20%),
-    0 -.25rem color-mix(in srgb, var(--color), black 20%),
-    .25rem 0 color-mix(in srgb, var(--color), black 20%),
-    -.25rem 0 color-mix(in srgb, var(--color), black 20%),
-    0 .5rem rgb(from var(--color) r g b / .1),
-    .25rem .25rem rgb(from var(--color) r g b / .1),
-    -.25rem .25rem rgb(from var(--color) r g b / .1),
-    .5rem .0 rgb(from var(--color) r g b / .1),
-    -.5rem 0 rgb(from var(--color) r g b / .1);
+    0 .12em color-mix(in srgb, var(--color), black 20%),
+    0 -.12em color-mix(in srgb, var(--color), black 20%),
+    .12em 0 color-mix(in srgb, var(--color), black 20%),
+    -.12em 0 color-mix(in srgb, var(--color), black 20%),
+    0 .24em rgb(from var(--color) r g b / .1),
+    .12em .12em rgb(from var(--color) r g b / .1),
+    -.12em .12em rgb(from var(--color) r g b / .1),
+    .24em .0 rgb(from var(--color) r g b / .1),
+    -.24em 0 rgb(from var(--color) r g b / .1);
   cursor: pointer;
 }
 
