@@ -1,4 +1,14 @@
 :root {
   --foreground: #fff;
   --background: #111;
+
+  --red: #CD3E3E;
+  --orange: #B85000;
+  --yellow: #8A6500;
+  --green: #007A40;
+  --cyan: #007A8F;
+  --blue: #2E63D6;
+  --purple: #7B3FE4;
+  --pink: #C737A8;
+  --grey: #626367;
 }
