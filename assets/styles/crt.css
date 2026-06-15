@@ -50,7 +50,7 @@
   inset: 0;
   pointer-events: none;
   mix-blend-mode: multiply;
-  background: /* scanlines */ linear-gradient(to bottom, transparent 50%, rgb(0 0 0 / .1) 50%) 0 0 / 100% 2px repeat;
+  background: /* scanlines */ linear-gradient(to bottom, transparent 50%, rgb(0 0 0 / .2) 50%) 0 0 / 100% 2px repeat;
 }
 
 .flicker  {
@@ -62,7 +62,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .flicker { animation: flicker calc(1s/12) infinite alternate; }
-  .crt::before { animation: beam 2s linear infinite; }
+  .crt::before { animation: beam 4s ease-in-out infinite; }
   .crt::after { animation: scanlines calc(1s/4) linear infinite; }
 }
 
@@ -72,22 +72,22 @@
 }
 
 @keyframes scanlines {
-  from { background-position: 0 0; }
-  to { background-position: 0 2px; }
+  from { transform: translateY(0); }
+  to { transform: translateY(2px); }
 }
 
 @keyframes flicker {
   from {
     text-shadow:
-      /* C */ .1rem 0 1px rgba(0, 255, 255, .5),
-      /* M */ -.2rem 0 1px rgba(255, 0, 255, .5),
-      /* Y */ -.1rem -.1rem 1px rgba(255, 255, 0, .5);
+      /* C */ .1rem 0 1px rgba(0, 255, 255, .2),
+      /* M */ -.2rem 0 1px rgba(255, 0, 255, .2),
+      /* Y */ -.1rem -.1rem 1px rgba(255, 255, 0, .2);
   }
   to {
     text-shadow:
-      /* C */ .2rem 0 1px rgba(0, 255, 255, .5),
-      /* M */ -.1rem 0 1px rgba(255, 0, 255, .5),
-      /* Y */ .1rem .1rem 1px rgba(255, 255, 0, .5);
+      /* C */ .2rem 0 1px rgba(0, 255, 255, .2),
+      /* M */ -.1rem 0 1px rgba(255, 0, 255, .2),
+      /* Y */ .1rem .1rem 1px rgba(255, 255, 0, .2);
   }
 }
 
