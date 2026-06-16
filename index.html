@@ -6,21 +6,21 @@
     <link rel="stylesheet" href="./assets/styles/crt.css" />
     <title>unwritten_</title>
   </head>
-  <body>
-    <div class="crt flicker">
+  <body class="flicker">
+    <div class="crt on">
       <h1>NESPixel headline</h1>
       <h2>TimesNewPixel headline</h2>
       <p>HelvetiPixel paragraph</p>
-      <button style="--color: var(--red)">Alert</button>
-      <button style="--color: var(--green)">Ok</button>
-      <button style="--color: var(--orange)">Cancel</button>
-      <button style="--color: var(--purple)">Test</button>
-      <button style="--color: var(--yellow)">Test</button>
-      <button style="--color: var(--cyan)">Test</button>
-      <button style="--color: var(--blue)">Test</button>
-      <button style="--color: var(--pink)">Test</button>
-      <button style="--color: var(--grey)">Test</button>
-      <button disabled>Disabled</button>
+      <button onclick="this.closest('.crt').classList.toggle('on')" style="--color: var(--red)">Alert</button>
+      <button onclick="this.closest('.crt').classList.toggle('on')" style="--color: var(--green)">Ok</button>
+      <button onclick="this.closest('.crt').classList.toggle('on')" style="--color: var(--orange)">Cancel</button>
+      <button onclick="this.closest('.crt').classList.toggle('on')" style="--color: var(--purple)">Test</button>
+      <button onclick="this.closest('.crt').classList.toggle('on')" style="--color: var(--yellow)">Test</button>
+      <button onclick="this.closest('.crt').classList.toggle('on')" style="--color: var(--cyan)">Test</button>
+      <button onclick="this.closest('.crt').classList.toggle('on')" style="--color: var(--blue)">Test</button>
+      <button onclick="this.closest('.crt').classList.toggle('on')" style="--color: var(--pink)">Test</button>
+      <button onclick="this.closest('.crt').classList.toggle('on')" style="--color: var(--grey)">Test</button>
+      <button onclick="this.closest('.crt').classList.toggle('on')" disabled>Disabled</button>
       <p>HelvetiPixel paragraph</p>
       <p>HelvetiPixel paragraph</p>
       <p>HelvetiPixel paragraph</p>

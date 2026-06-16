@@ -52,7 +52,7 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 1000;
+  z-index: 1;
   background: /* vignette */ radial-gradient(ellipse var(--crt-rx) var(--crt-ry) at center, transparent 75%, #000 100%);
 }
 
@@ -70,8 +70,8 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .crt:hover::before { animation: turn-on 1s ease-in-out forwards; }
-  .crt:not(:hover)::before { animation: turn-off 1s ease-in-out forwards; }
+  .crt.on::before { animation: turn-on 1s ease-in-out forwards; }
+  .crt::before { animation: turn-off 1s ease-in-out forwards; }
   .crt::after { animation: scanlines calc(1s/4) linear infinite; }
   .flicker { animation: flicker calc(1s/12) infinite alternate; }
 }
