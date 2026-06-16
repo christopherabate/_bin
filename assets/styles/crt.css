@@ -38,13 +38,18 @@
 @property --crt-rx {
   syntax: "<length-percentage>";
   inherits: false;
-  initial-value: 100%;
+  initial-value: 0;
 }
 
 @property --crt-ry {
   syntax: "<length-percentage>";
   inherits: false;
-  initial-value: 100%;
+  initial-value: 0;
+}
+
+.crt.on::before {
+  --crt-rx: 100vw;
+  --crt-ry: 100vh;
 }
 
 .crt::before {
@@ -53,7 +58,7 @@
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background: /* vignette */ radial-gradient(ellipse var(--crt-rx) var(--crt-ry) at center, transparent 75%, #000 100%);
+  background: /* vignette */ radial-gradient(ellipse var(--crt-rx) var(--crt-ry) at center, transparent 50%, #000 75%);
 }
 
 .crt::after {
@@ -70,23 +75,23 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .crt:not(.on)::before { animation: turn-off 1s ease-in-out forwards; }
   .crt.on::before { animation: turn-on 1s ease-in-out forwards; }
-  .crt::before { animation: turn-off 1s ease-in-out forwards; }
-  .crt::after { animation: scanlines calc(1s/4) linear infinite; }
+  .crt.on::after { animation: scanlines calc(1s/4) linear infinite; }
   .flicker { animation: flicker calc(1s/12) infinite alternate; }
 }
 
 @keyframes turn-on {
   0% { --crt-rx: 0; --crt-ry: 0; }
-  25% { --crt-rx: 1%; --crt-ry: 1%; }
-  75% { --crt-rx: 100%; --crt-ry: .5%; }
-  100% { --crt-rx: 100%; --crt-ry: 100%; }
+  25% { --crt-rx: 1vh; --crt-ry: 1vh; }
+  75% { --crt-rx: 100vw; --crt-ry: .5vh; }
+  100% { --crt-rx: 100vw; --crt-ry: 100vh; }
 }
 
 @keyframes turn-off {
-  0% { --crt-rx: 100%; --crt-ry: 100%; }
-  25% { --crt-rx: 100%; --crt-ry: .5%; }
-  75% { --crt-rx: 1%; --crt-ry: 1%; }
+  0% { --crt-rx: 100vw; --crt-ry: 100vh; }
+  25% { --crt-rx: 100vw; --crt-ry: .5vh; }
+  75% { --crt-rx: 1vh; --crt-ry: 1vh; }
   100% { --crt-rx: 0; --crt-ry: 0; }
 }
 
