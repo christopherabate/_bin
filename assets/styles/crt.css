@@ -133,6 +133,7 @@ button {
   color: white;
   background-color: color-mix(in srgb, var(--color), white 20%);
   text-shadow:
+    var(--glitch),
     0 .06em color-mix(in srgb, var(--color), black 25%),
     0 .12em color-mix(in srgb, var(--color), black 25%);
   box-shadow:
