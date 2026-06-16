@@ -11,4 +11,14 @@
   --purple: #7B3FE4;
   --pink: #C737A8;
   --grey: #626367;
+
+  --glitch:
+    /* C */ .1rem 0 1px rgba(0, 255, 255, .2),
+    /* M */ -.2rem 0 1px rgba(255, 0, 255, .2),
+    /* Y */ -.1rem -.1rem 1px rgba(255, 255, 0, .2);
+
+  --glitch-animated:
+    /* C */ .2rem 0 1px rgba(0, 255, 255, .2),
+    /* M */ -.1rem 0 1px rgba(255, 0, 255, .2),
+    /* Y */ .1rem .1rem 1px rgba(255, 255, 0, .2);
 }

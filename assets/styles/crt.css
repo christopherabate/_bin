@@ -9,7 +9,6 @@
   overflow-y: auto;
   color: var(--foreground);
   background:
-    /* vignette */ radial-gradient(ellipse closest-side, transparent 100%, black 250%),
     /* R */ radial-gradient(100% 100% at 0 0, transparent, rgb(255 0 0 / .1) 100%),
     /* G */ radial-gradient(100% 100% at 0 100%, transparent, rgb(0 255 0 / .1) 100%),
     /* B */ radial-gradient(100% 100% at 100% 0, transparent, rgb(0 0 255 / .1) 100%),
@@ -36,12 +35,25 @@
   );
 }
 
+@property --crt-rx {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@property --crt-ry {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
 .crt::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: /* beam */ radial-gradient(ellipse 100% 2px at center, rgb(255 255 255 / .2), transparent 50%);
+  z-index: 1000;
+  background: /* vignette */ radial-gradient(ellipse var(--crt-rx) var(--crt-ry) at center, transparent 75%, #000 100%);
 }
 
 .crt::after {
@@ -54,16 +66,28 @@
 }
 
 .flicker  {
-  text-shadow:
-    /* C */ .2em 0 1px rgba(0, 255, 255, .2),
-    /* M */ -2em 0 1px rgba(255, 0, 255, .2),
-    /* Y */ -2em -.1em 1px rgba(255, 255, 0, .2);
+  text-shadow: var(--glitch);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .flicker { animation: flicker calc(1s/12) infinite alternate; }
-  .crt::before { animation: beam 2s ease-in-out infinite; }
+  .crt:hover::before { animation: turn-on 1s ease-in-out forwards; }
+  .crt:not(:hover)::before { animation: turn-off 1s ease-in-out forwards; }
   .crt::after { animation: scanlines calc(1s/4) linear infinite; }
+  .flicker { animation: flicker calc(1s/12) infinite alternate; }
+}
+
+@keyframes turn-on {
+  0% { --crt-rx: 0; --crt-ry: 0; }
+  25% { --crt-rx: 1%; --crt-ry: 1%; }
+  75% { --crt-rx: 100%; --crt-ry: .5%; }
+  100% { --crt-rx: 100%; --crt-ry: 100%; }
+}
+
+@keyframes turn-off {
+  0% { --crt-rx: 100%; --crt-ry: 100%; }
+  25% { --crt-rx: 100%; --crt-ry: .5%; }
+  75% { --crt-rx: 1%; --crt-ry: 1%; }
+  100% { --crt-rx: 0; --crt-ry: 0; }
 }
 
 @keyframes beam {
@@ -77,18 +101,8 @@
 }
 
 @keyframes flicker {
-  from {
-    text-shadow:
-      /* C */ .1rem 0 1px rgba(0, 255, 255, .2),
-      /* M */ -.2rem 0 1px rgba(255, 0, 255, .2),
-      /* Y */ -.1rem -.1rem 1px rgba(255, 255, 0, .2);
-  }
-  to {
-    text-shadow:
-      /* C */ .2rem 0 1px rgba(0, 255, 255, .2),
-      /* M */ -.1rem 0 1px rgba(255, 0, 255, .2),
-      /* Y */ .1rem .1rem 1px rgba(255, 255, 0, .2);
-  }
+  from { text-shadow: var(--glitch); }
+  to { text-shadow: var(--glitch-animated); }
 }
 
 h1 {
