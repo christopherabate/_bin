@@ -69,7 +69,7 @@
   pointer-events: none;
   z-index: 1;
   background:
-    /* vignette */ radial-gradient(ellipse var(--crt-rx) var(--crt-ry) at center, transparent 50%, #000 100%),
+    /* vignette */ radial-gradient(ellipse var(--crt-rx) var(--crt-ry) at center, transparent 75%, #000 100%),
     /* R */ radial-gradient(100% 100% at 0 0, transparent, rgb(255 0 0 / .1) 100%),
     /* G */ radial-gradient(100% 100% at 0 100%, transparent, rgb(0 255 0 / .1) 100%),
     /* B */ radial-gradient(100% 100% at 100% 0, transparent, rgb(0 0 255 / .1) 100%),
@@ -103,14 +103,14 @@
 
 @keyframes turn-on {
   0% { --crt-rx: 0; --crt-ry: 0; }
-  50% { --crt-rx: 1%; --crt-ry: 1%; }
-  75% { --crt-rx: 100%; --crt-ry: .5%; }
+  50% { --crt-rx: .5%; --crt-ry: .5%; }
+  75% { --crt-rx: 100%; --crt-ry: 1%; }
   100% { --crt-rx: 100%; --crt-ry: 100%; }
 }
 
 @keyframes turn-off {
   0% { --crt-rx: 100%; --crt-ry: 100%; }
-  25% { --crt-rx: 100%; --crt-ry: .5%; }
+  25% { --crt-rx: 100%; --crt-ry: .1%; }
   50% { --crt-rx: 1%; --crt-ry: 1%; }
   100% { --crt-rx: 0; --crt-ry: 0; }
 }
