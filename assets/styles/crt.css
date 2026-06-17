@@ -57,8 +57,8 @@
 }
 
 .crt.on::before {
-  --crt-rx: 100vw;
-  --crt-ry: 100vh;
+  --crt-rx: 100%;
+  --crt-ry: 100%;
 }
 
 .crt::before {
@@ -138,6 +138,7 @@ h2 {
   font-family: NESPixel;
   font-size: 4rem;
 }
+
 p {
   font-family: HelvetiPixel;
   font-size: 2rem;
