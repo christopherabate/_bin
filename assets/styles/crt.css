@@ -30,6 +30,20 @@
   );
 }
 
+@media (orientation: landscape) {
+  .crt {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+}
+
+@media (orientation: portrait) {
+  .crt {
+    grid-auto-flow: row;
+    grid-auto-rows: 1fr;
+  }
+}
+
 @property --crt-rx {
   syntax: "<length-percentage>";
   inherits: false;
@@ -68,6 +82,11 @@
   pointer-events: none;
   mix-blend-mode: multiply;
   background: /* scanlines */ linear-gradient(to bottom, transparent 50%, rgb(0 0 0 / .2) 50%) 0 0 / 100% 2px repeat;
+}
+
+.crt > * {
+  overflow: auto;
+  padding: 2em;
 }
 
 .flicker  {
@@ -195,20 +214,3 @@ button:disabled {
   pointer-events: none;
 }
 
-.crt > * {
-  overflow: auto;
-}
-
-@media (orientation: landscape) {
-  .crt {
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
-  }
-}
-
-@media (orientation: portrait) {
-  .crt {
-    grid-auto-flow: row;
-    grid-auto-rows: 1fr;
-  }
-}
