@@ -47,13 +47,13 @@
 @property --crt-rx {
   syntax: "<length-percentage>";
   inherits: false;
-  initial-value: 0;
+  initial-value: 0%;
 }
 
 @property --crt-ry {
   syntax: "<length-percentage>";
   inherits: false;
-  initial-value: 0;
+  initial-value: 0%;
 }
 
 .crt.on::before {
@@ -96,21 +96,21 @@
 @media (prefers-reduced-motion: no-preference) {
   .crt:not(.on)::before { animation: turn-off 1s ease-in-out forwards; }
   .crt.on::before { animation: turn-on 1s ease-in-out forwards; }
-  .crt.on::after { animation: scanlines calc(1s/4) linear infinite; }
+  .crt::after { animation: scanlines calc(1s/4) linear infinite; }
   .flicker { animation: flicker calc(1s/12) infinite alternate; }
 }
 
 @keyframes turn-on {
   0% { --crt-rx: 0; --crt-ry: 0; }
-  25% { --crt-rx: 1vh; --crt-ry: 1vh; }
-  75% { --crt-rx: 100%; --crt-ry: .5vh; }
+  50% { --crt-rx: 1%; --crt-ry: 1%; }
+  75% { --crt-rx: 100%; --crt-ry: .5%; }
   100% { --crt-rx: 100%; --crt-ry: 100%; }
 }
 
 @keyframes turn-off {
   0% { --crt-rx: 100%; --crt-ry: 100%; }
-  25% { --crt-rx: 100%; --crt-ry: .5vh; }
-  75% { --crt-rx: 1vh; --crt-ry: 1vh; }
+  25% { --crt-rx: 100%; --crt-ry: .5%; }
+  50% { --crt-rx: 1%; --crt-ry: 1%; }
   100% { --crt-rx: 0; --crt-ry: 0; }
 }
 
