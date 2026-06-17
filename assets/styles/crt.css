@@ -3,7 +3,8 @@
 @import "variables.css";
 
 .crt {
-  height: 100dvh;
+  height: 90dvh;
+  width: 90dvw;
   display: grid;
   position: relative;
   overflow-y: auto;
@@ -63,7 +64,7 @@
 
 .crt::before {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 1;
