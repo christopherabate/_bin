@@ -4,16 +4,11 @@
 
 .crt {
   height: 100dvh;
-  padding: 4vh;
+  display: grid;
   position: relative;
   overflow-y: auto;
   color: var(--foreground);
-  background:
-    /* R */ radial-gradient(100% 100% at 0 0, transparent, rgb(255 0 0 / .1) 100%),
-    /* G */ radial-gradient(100% 100% at 0 100%, transparent, rgb(0 255 0 / .1) 100%),
-    /* B */ radial-gradient(100% 100% at 100% 0, transparent, rgb(0 0 255 / .1) 100%),
-    /* White */ radial-gradient(100% 100% at 100% 100%, transparent, rgb(255 255 255 / .1) 100%),
-    /* Black */ var(--background);
+  background-color: var(--background);
   /* circle clip fallback */ clip-path: inset(0 round 5vh);
   --_r: clamp(0%, 5vh, 20vh);
   --_v: calc(var(--_r)*(1 - sqrt(2)/4));
@@ -58,7 +53,12 @@
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background: /* vignette */ radial-gradient(ellipse var(--crt-rx) var(--crt-ry) at center, transparent 50%, #000 75%);
+  background:
+    /* vignette */ radial-gradient(ellipse var(--crt-rx) var(--crt-ry) at center, transparent 50%, #000 100%),
+    /* R */ radial-gradient(100% 100% at 0 0, transparent, rgb(255 0 0 / .1) 100%),
+    /* G */ radial-gradient(100% 100% at 0 100%, transparent, rgb(0 255 0 / .1) 100%),
+    /* B */ radial-gradient(100% 100% at 100% 0, transparent, rgb(0 0 255 / .1) 100%),
+    /* White */ radial-gradient(100% 100% at 100% 100%, transparent, rgb(255 255 255 / .1) 100%);
 }
 
 .crt::after {
@@ -84,13 +84,13 @@
 @keyframes turn-on {
   0% { --crt-rx: 0; --crt-ry: 0; }
   25% { --crt-rx: 1vh; --crt-ry: 1vh; }
-  75% { --crt-rx: 100vw; --crt-ry: .5vh; }
-  100% { --crt-rx: 100vw; --crt-ry: 100vh; }
+  75% { --crt-rx: 100%; --crt-ry: .5vh; }
+  100% { --crt-rx: 100%; --crt-ry: 100%; }
 }
 
 @keyframes turn-off {
-  0% { --crt-rx: 100vw; --crt-ry: 100vh; }
-  25% { --crt-rx: 100vw; --crt-ry: .5vh; }
+  0% { --crt-rx: 100%; --crt-ry: 100%; }
+  25% { --crt-rx: 100%; --crt-ry: .5vh; }
   75% { --crt-rx: 1vh; --crt-ry: 1vh; }
   100% { --crt-rx: 0; --crt-ry: 0; }
 }
@@ -193,4 +193,22 @@ button:not(:disabled):active {
 button:disabled {
   filter: grayscale(1) contrast(0.75) brightness(1) opacity(0.5);
   pointer-events: none;
+}
+
+.crt > * {
+  overflow: auto;
+}
+
+@media (orientation: landscape) {
+  .crt {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+}
+
+@media (orientation: portrait) {
+  .crt {
+    grid-auto-flow: row;
+    grid-auto-rows: 1fr;
+  }
 }
