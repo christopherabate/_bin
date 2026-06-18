@@ -1,7 +1,10 @@
 :root {
-  --foreground: #fff;
-  --background: #111;
+  /* sizes */
+  --pixel: .2rem;
 
+  /* colors */
+  --foreground: #fff;
+  --background: #000;
   --red: #CD3E3E;
   --orange: #B85000;
   --yellow: #8A6500;
@@ -12,13 +15,13 @@
   --pink: #C737A8;
   --grey: #626367;
 
+  /* effects */
   --glitch:
-    /* C */ .2rem 0 2px rgba(0, 255, 255, .2),
-    /* M */ -.2rem 0 2px rgba(255, 0, 255, .2),
+    /* C */ calc(1 * var(--pixel)) 0 2px rgba(0, 255, 255, .2),
+    /* M */ calc(-1 * var(--pixel)) 0 2px rgba(255, 0, 255, .2),
     /* Y */ 0 0 4px rgba(255, 255, 0, .4);
-
   --glitch-animated:
-    /* C */ -.1rem 0 2px rgba(0, 255, 255, .2),
-    /* M */ .1rem 0 2px rgba(255, 0, 255, .2),
+    /* C */ calc(-1/2 * var(--pixel)) 0 2px rgba(0, 255, 255, .2),
+    /* M */ calc(1/2 * var(--pixel)) 0 2px rgba(255, 0, 255, .2),
     /* Y */ 0 0 2px rgba(255, 255, 0, .2);
 }
