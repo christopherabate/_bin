@@ -1,7 +1,3 @@
-@import "reset.css";
-@import "fonts.css";
-@import "variables.css";
-
 .crt {
   --ratio: 5 / 4;
   aspect-ratio: var(--ratio);
@@ -11,24 +7,24 @@
   overflow-y: auto;
   color: var(--foreground);
   background-color: var(--background);
-  --_r: 10vh;
-  /* circle clip fallback */ clip-path: inset(0 round var(--_r));
-  --_v: calc(var(--_r)*(1 - sqrt(2)/4));
-  --_p: calc(var(--_v) - var(--_r)/2);
+  --crt-r: 10vh;
+  /* circle clip fallback */ clip-path: inset(0 round var(--crt-r));
+  --crt-v: calc(var(--crt-r)*(1 - sqrt(2)/4));
+  --crt-p: calc(var(--crt-v) - var(--crt-r)/2);
   /* squircle clip */ clip-path: shape(
-    from var(--_v) var(--_p),
-    curve to 50% 0 with var(--_r) 0,
-    curve to calc(100% - var(--_v)) var(--_p) with calc(100% - var(--_r)) 0,
-    curve to calc(100% - var(--_p)) var(--_v) with calc(100% - 2*var(--_p)) calc(2*var(--_p)),
-    curve to 100% 50% with 100% var(--_r),
-    curve to calc(100% - var(--_p)) calc(100% - var(--_v)) with 100% calc(100% - var(--_r)),
-    curve to calc(100% - var(--_v)) calc(100% - var(--_p)) with calc(100% - 2*var(--_p)) calc(100% - 2*var(--_p)),
-    curve to 50% 100% with calc(100% - var(--_r)) 100%,
-    curve to var(--_v) calc(100% - var(--_p)) with var(--_r) 100%,
-    curve to var(--_p) calc(100% - var(--_v)) with calc(2*var(--_p)) calc(100% - 2*var(--_p)),
-    curve to 0 50% with 0 calc(100% - var(--_r)),
-    curve to var(--_p) var(--_v) with 0 var(--_r),
-    curve to var(--_v) var(--_p) with calc(2*var(--_p)) calc(2*var(--_p))
+    from var(--crt-v) var(--crt-p),
+    curve to 50% 0 with var(--crt-r) 0,
+    curve to calc(100% - var(--crt-v)) var(--crt-p) with calc(100% - var(--crt-r)) 0,
+    curve to calc(100% - var(--crt-p)) var(--crt-v) with calc(100% - 2*var(--crt-p)) calc(2*var(--crt-p)),
+    curve to 100% 50% with 100% var(--crt-r),
+    curve to calc(100% - var(--crt-p)) calc(100% - var(--crt-v)) with 100% calc(100% - var(--crt-r)),
+    curve to calc(100% - var(--crt-v)) calc(100% - var(--crt-p)) with calc(100% - 2*var(--crt-p)) calc(100% - 2*var(--crt-p)),
+    curve to 50% 100% with calc(100% - var(--crt-r)) 100%,
+    curve to var(--crt-v) calc(100% - var(--crt-p)) with var(--crt-r) 100%,
+    curve to var(--crt-p) calc(100% - var(--crt-v)) with calc(2*var(--crt-p)) calc(100% - 2*var(--crt-p)),
+    curve to 0 50% with 0 calc(100% - var(--crt-r)),
+    curve to var(--crt-p) var(--crt-v) with 0 var(--crt-r),
+    curve to var(--crt-v) var(--crt-p) with calc(2*var(--crt-p)) calc(2*var(--crt-p))
   );
 }
 
@@ -46,21 +42,21 @@
   }
 }
 
-@property --crt-rx {
+@property --crt-x {
   syntax: "<length-percentage>";
   inherits: false;
   initial-value: 0%;
 }
 
-@property --crt-ry {
+@property --crt-y {
   syntax: "<length-percentage>";
   inherits: false;
   initial-value: 0%;
 }
 
 .crt.on::before {
-  --crt-rx: 100%;
-  --crt-ry: 100%;
+  --crt-x: 100%;
+  --crt-y: 100%;
 }
 
 .crt::before {
@@ -71,7 +67,7 @@
   pointer-events: none;
   z-index: 1;
   background:
-    /* vignette */ radial-gradient(ellipse var(--crt-rx) var(--crt-ry) at center, transparent 75%, #000 100%),
+    /* vignette */ radial-gradient(ellipse var(--crt-x) var(--crt-y) at center, transparent 75%, #000 100%),
     /* R */ radial-gradient(circle at 15% 100%, rgb(255 0 0 / var(--opacity)) 25%, transparent 75%),
     /* G */ radial-gradient(circle at 50% 0, rgb(0 255 0 / var(--opacity)) 25%, transparent 75%),
     /* B */ radial-gradient(circle at 85% 100%, rgb(0 0 255 / var(--opacity)) 25%, transparent 75%),
@@ -93,113 +89,3 @@
   overflow: auto;
   padding: 5vh;
 }
-
-.glitch  {
-  text-shadow: var(--glitch);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .crt:not(.on)::before { animation: turn-off 1s ease-in-out forwards; }
-  .crt.on::before { animation: turn-on 1s ease-in-out forwards; }
-  .crt::after { animation: scanlines calc(1s / 12) linear infinite; }
-  .glitch { animation: glitch calc(1s / 12) infinite alternate; }
-}
-
-@keyframes turn-on {
-  0% { --crt-rx: 0; --crt-ry: 0; }
-  50% { --crt-rx: .5%; --crt-ry: .5%; }
-  75% { --crt-rx: 100%; --crt-ry: 1%; }
-  100% { --crt-rx: 100%; --crt-ry: 100%; }
-}
-
-@keyframes turn-off {
-  0% { --crt-rx: 100%; --crt-ry: 100%; }
-  25% { --crt-rx: 100%; --crt-ry: .1%; }
-  50% { --crt-rx: 1%; --crt-ry: 1%; }
-  100% { --crt-rx: 0; --crt-ry: 0; }
-}
-
-@keyframes beam {
-  from { transform: translateY(50%); }
-  to { transform: translateY(-50%); }
-}
-
-@keyframes scanlines {
-  from { transform: translateY(0); }
-  to { transform: translateY(2px); }
-}
-
-@keyframes glitch {
-  from { text-shadow: var(--glitch); }
-  to { text-shadow: var(--glitch-animated); }
-}
-
-h1 {
-  font-family: TimesNewPixel;
-  font-size: 6rem;
-}
-
-h2 {
-  font-family: NESPixel;
-  font-size: 4rem;
-}
-
-p {
-  font-family: HelvetiPixel;
-  font-size: 2rem;
-}
-
-button {
-  font-family: NESPixel;
-  font-size: 2rem;
-  border: 0;
-  margin: calc(3 * var(--pixel)) calc(1 * var(--pixel));
-  color: white;
-  background-color: color-mix(in srgb, var(--color), white 20%);
-  text-shadow:
-    var(--glitch),
-    0 calc(1/2 * var(--pixel)) color-mix(in srgb, var(--color), black 25%),
-    0 calc(1 * var(--pixel)) color-mix(in srgb, var(--color), black 25%);
-  box-shadow:
-    0 calc(1 * var(--pixel)) color-mix(in srgb, var(--color), black 10%),
-    0 calc(-1 * var(--pixel)) color-mix(in srgb, var(--color), black 10%),
-    calc(1 * var(--pixel)) 0 color-mix(in srgb, var(--color), black 10%),
-    calc(-1 * var(--pixel)) 0 color-mix(in srgb, var(--color), black 10%),
-    0 calc(3 * var(--pixel)) color-mix(in srgb, var(--color), black 50%),
-    calc(1 * var(--pixel)) calc(2 * var(--pixel)) color-mix(in srgb, var(--color), black 50%),
-    calc(-1 * var(--pixel)) calc(2 * var(--pixel)) color-mix(in srgb, var(--color), black 50%),
-    0 calc(4 * var(--pixel)) rgb(from var(--color) r g b / .1),
-    calc(1 * var(--pixel)) calc(3 * var(--pixel)) rgb(from var(--color) r g b / .1),
-    calc(-1 * var(--pixel)) calc(3 * var(--pixel)) rgb(from var(--color) r g b / .1),
-    calc(2 * var(--pixel)) calc(1 * var(--pixel)) rgb(from var(--color) r g b / .1),
-    calc(-2 * var(--pixel)) calc(1 * var(--pixel)) rgb(from var(--color) r g b / .1),
-    inset 0 calc(1 * var(--pixel)) color-mix(in srgb, var(--color), white 50%);
-  cursor: pointer;
-}
-
-button:not(:disabled):hover,
-button:not(:disabled):focus {
-  transform: translateY(calc(1 * var(--pixel)));
-  background-color: var(--color);
-  box-shadow:
-    0 calc(1 * var(--pixel)) color-mix(in srgb, var(--color), black 10%),
-    0 calc(-1 * var(--pixel)) color-mix(in srgb, var(--color), black 10%),
-    calc(1 * var(--pixel)) 0 color-mix(in srgb, var(--color), black 10%),
-    calc(-1 * var(--pixel)) 0 color-mix(in srgb, var(--color), black 10%),
-    0 calc(2 * var(--pixel)) color-mix(in srgb, var(--color), black 50%),
-    calc(1 * var(--pixel)) calc(1 * var(--pixel)) color-mix(in srgb, var(--color), black 50%),
-    calc(-1 * var(--pixel)) calc(1 * var(--pixel)) color-mix(in srgb, var(--color), black 50%),
-    0 calc(3 * var(--pixel)) rgb(from var(--color) r g b / .1),
-    calc(1 * var(--pixel)) calc(2 * var(--pixel)) rgb(from var(--color) r g b / .1),
-    calc(-1 * var(--pixel)) calc(2 * var(--pixel)) rgb(from var(--color) r g b / .1),
-    calc(2 * var(--pixel)) calc(1/2 * var(--pixel)) rgb(from var(--color) r g b / .1),
-    calc(-2 * var(--pixel)) calc(1/2 * var(--pixel)) rgb(from var(--color) r g b / .1),
-    inset 0 calc(1 * var(--pixel)) color-mix(in srgb, var(--color), white 20%);
-  cursor: pointer;
-}
-
-button:disabled {
-  filter: grayscale(1) contrast(0.75) brightness(1) opacity(0.5);
-  pointer-events: none;
-}
-

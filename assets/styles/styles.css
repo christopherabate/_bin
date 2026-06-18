@@ -1,0 +1,61 @@
+@import "reset.css";
+@import "fonts.css";
+@import "variables.css";
+
+@import "buttons.css";
+@import "crt.css";
+
+.glitch  {
+  text-shadow: var(--glitch);
+}
+
+h1 {
+  font-family: TimesNewPixel;
+  font-size: 6rem;
+}
+
+h2 {
+  font-family: NESPixel;
+  font-size: 4rem;
+}
+
+p {
+  font-family: HelvetiPixel;
+  font-size: 2rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .crt:not(.on)::before { animation: turn-off 1s ease-in-out forwards; }
+  .crt.on::before { animation: turn-on 1s ease-in-out forwards; }
+  .crt::after { animation: scanlines calc(1s / 12) linear infinite; }
+  .glitch { animation: glitch calc(1s / 12) infinite alternate; }
+}
+
+@keyframes turn-on {
+  0% { --crt-x: 0; --crt-y: 0; }
+  50% { --crt-x: .5%; --crt-y: .5%; }
+  75% { --crt-x: 100%; --crt-y: 1%; }
+  100% { --crt-x: 100%; --crt-y: 100%; }
+}
+
+@keyframes turn-off {
+  0% { --crt-x: 100%; --crt-y: 100%; }
+  25% { --crt-x: 100%; --crt-y: .1%; }
+  50% { --crt-x: 1%; --crt-y: 1%; }
+  100% { --crt-x: 0; --crt-y: 0; }
+}
+
+@keyframes beam {
+  from { transform: translateY(50%); }
+  to { transform: translateY(-50%); }
+}
+
+@keyframes scanlines {
+  from { transform: translateY(0); }
+  to { transform: translateY(2px); }
+}
+
+@keyframes glitch {
+  from { text-shadow: var(--glitch); }
+  to { text-shadow: var(--glitch-animated); }
+}

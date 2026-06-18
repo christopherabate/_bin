@@ -3,8 +3,8 @@
   --pixel: .2rem;
 
   /* colors */
-  --foreground: #fff;
-  --background: #000;
+  --foreground: #111;
+  --background: #FFF;
   --red: #CD3E3E;
   --orange: #B85000;
   --yellow: #8A6500;
@@ -24,4 +24,17 @@
     /* C */ calc(-1/2 * var(--pixel)) 0 2px rgba(0, 255, 255, .2),
     /* M */ calc(1/2 * var(--pixel)) 0 2px rgba(255, 0, 255, .2),
     /* Y */ 0 0 2px rgba(255, 255, 0, .2);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* colors */
+    --foreground: #FFF;
+    --background: #111;
+  }
+}
+
+[data-theme="dark"] {
+  --foreground: #FFF;
+  --background: #111;
 }
