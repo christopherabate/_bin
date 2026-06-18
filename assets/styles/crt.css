@@ -11,8 +11,8 @@
   overflow-y: auto;
   color: var(--foreground);
   background-color: var(--background);
-  /* circle clip fallback */ clip-path: inset(0 round 5vh);
-  --_r: clamp(0%, 5vh, 20vh);
+  --_r: 10vh;
+  /* circle clip fallback */ clip-path: inset(0 round var(--_r));
   --_v: calc(var(--_r)*(1 - sqrt(2)/4));
   --_p: calc(var(--_v) - var(--_r)/2);
   /* squircle clip */ clip-path: shape(
@@ -71,10 +71,10 @@
   z-index: 1;
   background:
     /* vignette */ radial-gradient(ellipse var(--crt-rx) var(--crt-ry) at center, transparent 75%, #000 100%),
-    /* R */ radial-gradient(100% 100% at 0 0, transparent, rgb(255 0 0 / .05) 100%),
-    /* G */ radial-gradient(100% 100% at 0 100%, transparent, rgb(0 255 0 / .05) 100%),
-    /* B */ radial-gradient(100% 100% at 100% 0, transparent, rgb(0 0 255 / .05) 100%),
-    /* White */ radial-gradient(100% 100% at 100% 100%, transparent, rgb(255 255 255 / .05) 100%);
+    /* R */ radial-gradient(circle at 0 100%, transparent 25%, rgb(255 0 0 / .1) 75%),
+    /* G */ radial-gradient(circle at 100% 100%, transparent 25%, rgb(0 255 0 / .1) 75%),
+    /* B */ radial-gradient(circle at 50% 0, transparent 25%, rgb(0 0 255 / .1) 75%),
+    /* light */ radial-gradient(circle at center, rgb(255 255 255 / .1) 0%, transparent 75%);
 }
 
 .crt::after {
@@ -82,16 +82,15 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  mix-blend-mode: multiply;
   background: /* scanlines */ linear-gradient(to bottom, transparent 50%, rgb(0 0 0 / .2) 50%) 0 0 / 100% 2px repeat;
 }
 
 .crt > * {
   overflow: auto;
-  padding: 2em;
+  padding: 5vh;
 }
 
-.flicker  {
+.glitch  {
   text-shadow: var(--glitch);
 }
 
@@ -99,7 +98,7 @@
   .crt:not(.on)::before { animation: turn-off 1s ease-in-out forwards; }
   .crt.on::before { animation: turn-on 1s ease-in-out forwards; }
   .crt::after { animation: scanlines calc(1s/4) linear infinite; }
-  .flicker { animation: flicker calc(1s/12) infinite alternate; }
+  .glitch { animation: glitch calc(1s / 12) infinite alternate; }
 }
 
 @keyframes turn-on {
@@ -126,7 +125,7 @@
   to { transform: translateY(2px); }
 }
 
-@keyframes flicker {
+@keyframes glitch {
   from { text-shadow: var(--glitch); }
   to { text-shadow: var(--glitch-animated); }
 }
@@ -151,64 +150,48 @@ button {
   font-family: NESPixel;
   font-size: 2rem;
   border: 0;
-  margin: .36em .12em;
+  margin: .6rem .2rem;
   color: white;
   background-color: color-mix(in srgb, var(--color), white 20%);
   text-shadow:
     var(--glitch),
-    0 .06em color-mix(in srgb, var(--color), black 25%),
-    0 .12em color-mix(in srgb, var(--color), black 25%);
+    0 .1rem color-mix(in srgb, var(--color), black 25%),
+    0 .2rem color-mix(in srgb, var(--color), black 25%);
   box-shadow:
-    0 .12em color-mix(in srgb, var(--color), black 10%),
-    0 -.12em color-mix(in srgb, var(--color), black 10%),
-    .12em 0 color-mix(in srgb, var(--color), black 10%),
-    -.12em 0 color-mix(in srgb, var(--color), black 10%),
-    0 .36em color-mix(in srgb, var(--color), black 50%),
-    .12em .24em color-mix(in srgb, var(--color), black 50%),
-    -.12em .24em color-mix(in srgb, var(--color), black 50%),
-    0 .48em rgb(from var(--color) r g b / .1),
-    .12em .36em rgb(from var(--color) r g b / .1),
-    -.12em .36em rgb(from var(--color) r g b / .1),
-    .24em .12em rgb(from var(--color) r g b / .1),
-    -.24em .12em rgb(from var(--color) r g b / .1),
-    inset 0 .12em color-mix(in srgb, var(--color), white 50%);
+    0 .2rem color-mix(in srgb, var(--color), black 10%),
+    0 -.2rem color-mix(in srgb, var(--color), black 10%),
+    .2rem 0 color-mix(in srgb, var(--color), black 10%),
+    -.2rem 0 color-mix(in srgb, var(--color), black 10%),
+    0 .6rem color-mix(in srgb, var(--color), black 50%),
+    .2rem .4rem color-mix(in srgb, var(--color), black 50%),
+    -.2rem .4rem color-mix(in srgb, var(--color), black 50%),
+    0 .8rem rgb(from var(--color) r g b / .1),
+    .2rem .6rem rgb(from var(--color) r g b / .1),
+    -.2rem .6rem rgb(from var(--color) r g b / .1),
+    .4rem .2rem rgb(from var(--color) r g b / .1),
+    -.4rem .2rem rgb(from var(--color) r g b / .1),
+    inset 0 .2rem color-mix(in srgb, var(--color), white 50%);
   cursor: pointer;
 }
 
 button:not(:disabled):hover,
 button:not(:disabled):focus {
-  transform: translateY(.12em);
+  transform: translateY(.2rem);
   background-color: var(--color);
   box-shadow:
-    0 .12em color-mix(in srgb, var(--color), black 10%),
-    0 -.12em color-mix(in srgb, var(--color), black 10%),
-    .12em 0 color-mix(in srgb, var(--color), black 10%),
-    -.12em 0 color-mix(in srgb, var(--color), black 10%),
-    0 .24em color-mix(in srgb, var(--color), black 50%),
-    .12em .12em color-mix(in srgb, var(--color), black 50%),
-    -.12em .12em color-mix(in srgb, var(--color), black 50%),
-    0 .36em rgb(from var(--color) r g b / .1),
-    .12em .24em rgb(from var(--color) r g b / .1),
-    -.12em .24em rgb(from var(--color) r g b / .1),
-    .24em .06em rgb(from var(--color) r g b / .1),
-    -.24em .06em rgb(from var(--color) r g b / .1),
-    inset 0 .12em color-mix(in srgb, var(--color), white 20%);
-  cursor: pointer;
-}
-
-button:not(:disabled):active {
-  transform: translateY(.24em);
-  background-color: color-mix(in srgb, var(--color), black 10%);
-  box-shadow:
-    0 .12em color-mix(in srgb, var(--color), black 20%),
-    0 -.12em color-mix(in srgb, var(--color), black 20%),
-    .12em 0 color-mix(in srgb, var(--color), black 20%),
-    -.12em 0 color-mix(in srgb, var(--color), black 20%),
-    0 .24em rgb(from var(--color) r g b / .1),
-    .12em .12em rgb(from var(--color) r g b / .1),
-    -.12em .12em rgb(from var(--color) r g b / .1),
-    .24em .0 rgb(from var(--color) r g b / .1),
-    -.24em 0 rgb(from var(--color) r g b / .1);
+    0 .2rem color-mix(in srgb, var(--color), black 10%),
+    0 -.2rem color-mix(in srgb, var(--color), black 10%),
+    .2rem 0 color-mix(in srgb, var(--color), black 10%),
+    -.2rem 0 color-mix(in srgb, var(--color), black 10%),
+    0 .4rem color-mix(in srgb, var(--color), black 50%),
+    .2rem .2rem color-mix(in srgb, var(--color), black 50%),
+    -.2rem .2rem color-mix(in srgb, var(--color), black 50%),
+    0 .6rem rgb(from var(--color) r g b / .1),
+    .2rem .4rem rgb(from var(--color) r g b / .1),
+    -.2rem .4rem rgb(from var(--color) r g b / .1),
+    .4rem .1rem rgb(from var(--color) r g b / .1),
+    -.4rem .1rem rgb(from var(--color) r g b / .1),
+    inset 0 .2rem color-mix(in srgb, var(--color), white 20%);
   cursor: pointer;
 }
 
