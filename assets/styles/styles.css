@@ -30,7 +30,7 @@ h2 {
   .crt:not(.on)::before { animation: turn-off 1s ease-in-out forwards; }
   .crt.on::before { animation: turn-on 1s ease-in-out forwards; }
   .crt.on::after { animation: scanlines calc(1s / 12) linear infinite; }
-  .crt.noise::after { animation: noise calc(1s / 6) steps(4) infinite; }
+  .crt.noise::after { animation: noise calc(1s / 6) steps(3) infinite; }
   .glitch { animation: glitch calc(1s / 12) infinite alternate; }
 }
 
@@ -60,9 +60,8 @@ h2 {
 
 @keyframes noise {
   0% { background-position: 0 0 }
-  25% { background-position: -50px -50px }
-  50% { background-position: 100px 50px }
-  100% { background-position: 50px -100px }
+  50% { background-position: -100px 250px }
+  100% { background-position: -300px -350px }
 }
 
 @keyframes glitch {
