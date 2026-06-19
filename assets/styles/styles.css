@@ -5,29 +5,32 @@
 @import "buttons.css";
 @import "crt.css";
 
-.glitch  {
-  text-shadow: var(--glitch);
+body  {
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: HelvetiPixel;
+  font-size: 2rem;
 }
 
 h1 {
   font-family: TimesNewPixel;
-  font-size: 6rem;
+  font-size: 5rem;
 }
 
 h2 {
   font-family: NESPixel;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
-p {
-  font-family: HelvetiPixel;
-  font-size: 2rem;
+.glitch  {
+  text-shadow: var(--glitch);
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .crt:not(.on)::before { animation: turn-off 1s ease-in-out forwards; }
   .crt.on::before { animation: turn-on 1s ease-in-out forwards; }
-  .crt::after { animation: scanlines calc(1s / 12) linear infinite; }
+  .crt.on::after { animation: scanlines calc(1s / 12) linear infinite; }
+  .crt.noise::after { animation: noise calc(1s / 6) steps(4) infinite; }
   .glitch { animation: glitch calc(1s / 12) infinite alternate; }
 }
 
@@ -53,6 +56,13 @@ p {
 @keyframes scanlines {
   from { transform: translateY(0); }
   to { transform: translateY(2px); }
+}
+
+@keyframes noise {
+  0% { background-position: 0 0 }
+  25% { background-position: -50px -50px }
+  50% { background-position: 100px 50px }
+  100% { background-position: 50px -100px }
 }
 
 @keyframes glitch {
