@@ -77,12 +77,13 @@
   inset: 0;
   pointer-events: none;
   z-index: 2;
+  overflow: hidden;
 }
 
 .crt.on::after {
   --opacity: .2;
   background: 
-    /* scanlines */ linear-gradient(to bottom, transparent 50%, rgb(0 0 0 / var(--opacity)) 50%) 0 0 / 100% 2px repeat;
+    /* scanlines */ linear-gradient(to bottom, transparent 50%, rgb(0 0 0 / var(--opacity)) 50%) repeat 0 0 / 100% 2px;
 }
 
 .crt.noise::after {
