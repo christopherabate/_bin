@@ -4,6 +4,7 @@
 
 @import "buttons.css";
 @import "crt.css";
+@import "library.css";
 
 body  {
   color: var(--foreground);
@@ -26,35 +27,26 @@ h2 {
   text-shadow: var(--glitch);
 }
 
-.library {
-  --x: -3;
-  --y: -6;
-  --size: 256px;
-  --scale: 4;
-  background: url(../images/library.png ) repeat center / calc(var(--scale) * var(--size));
-  image-rendering: pixelated;
-}
-
 @media (prefers-reduced-motion: no-preference) {
-  .crt:not(.on)::before { animation: turn-off 1s ease-in-out forwards; }
-  .crt.on::before { animation: turn-on 1s ease-in-out forwards; }
-  .crt.on::after { animation: scanlines calc(1s / 12) linear infinite; }
+  .crt:not(.active)::before { animation: turn-off 1s ease-in-out forwards; }
+  .crt.active::before { animation: turn-on 1s ease-in-out forwards; }
+  .crt.active::after { animation: scanlines calc(1s / 12) linear infinite; }
   .crt.noise::after { animation: noise calc(1s / 6) steps(3) infinite; }
   .glitch { animation: glitch calc(1s / 12) infinite alternate; }
-  .library { animation:
-    library-x 3s cubic-bezier(0.9, 0, 0.1, 1) forwards,
-    library-y 3s cubic-bezier(0.9, 0, 0.1, 1) forwards 3s;
-  }
+  .library.active { animation: library 5s cubic-bezier(0.9, 0, 0.1, 1) forwards; }
+  .library.active::after { animation: shelf 5s cubic-bezier(0.9, 0, 0.1, 1) forwards; }
 }
 
-@keyframes library-x {
-  from { background-position-x: 50%; }
-  to { background-position-x: calc(50% + (var(--scale) * var(--size) * var(--x))); }
+@keyframes library {
+  0% { background-position: 50% 50%; }
+  50% { background-position: calc(50% + (var(--scale) * var(--size) * var(--x))) 50%; }
+  100% { background-position: calc(50% + (var(--scale) * var(--size) * var(--x))) calc(50% + (var(--scale) * var(--size) * var(--y))); }
 }
 
-@keyframes library-y {
-  from { background-position-y: 50%; }
-  to { background-position-y: calc(50% + (var(--scale) * var(--size) * var(--y))); }
+@keyframes shelf {
+  0% { transform: translate(calc(-1 * (var(--scale) * var(--size) * var(--x)) - 50%), calc(-1 * (var(--scale) * var(--size) * var(--y)) - 50%)); }
+  50% { transform: translate(-50%, calc(-1 * (var(--scale) * var(--size) * var(--y)) - 50%)); }
+  100% { transform: translate(-50%, -50%); }
 }
 
 @keyframes turn-on {
