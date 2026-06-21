@@ -30,7 +30,7 @@ h2 {
   --x: -3;
   --y: -6;
   --size: 256px;
-  --scale: 3;
+  --scale: 4;
   background: url(../images/library.png ) repeat center / calc(var(--scale) * var(--size));
   image-rendering: pixelated;
 }

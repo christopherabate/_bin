@@ -1,5 +1,5 @@
 .crt {
-  --ratio: 5 / 4;
+  --ratio: 16 / 9;
   aspect-ratio: var(--ratio);
   width: min(100dvw, calc(100dvh * var(--ratio)));
   display: grid;
