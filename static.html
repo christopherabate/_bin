@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>unwritten_</title>
+    <style>
+        @import "/assets/styles/reset.css";
+
+        
+        .noise {
+            position: relative;
+        }
+
+        .noise::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background:  var(--noise) repeat;
+            animation: bg-animation .2s steps(4) infinite;
+            background-size: 200px;
+        }
+
+        @keyframes bg-animation {
+            0% { background-position: 0 0 }
+            25% { background-position: -50px -50px }
+            50% { background-position: 100px 50px }
+            100% { background-position: 50px -100px }
+        }
+    </style>
+  </head>
+
+  <body data-theme="dark">
+    <section class="crt on noise">
+      <div>
+        <h1>splash</h1>
+        <p>duration: Xs</p>
+      </div>
+    </section>
+    <hr />
+    <section class="crt on">
+      <div>
+        <h1>title</h1>
+        <button>play</button>
+        <button>memories</button>
+        <button>credits</button>
+      </div>
+    </section>
+    <hr />
+    <section class="crt on">
+      <div>
+        <h1>saves</h1>
+        <button>slot 1 <small>timestamp</small></button>
+        <button>slot 2 <small>new</small></button>
+        <button>slot 3 <small>new</small></button>
+      </div>
+    </section>
+    <hr />
+    <section class="crt on">
+      <div>
+        <h1>intro</h1>
+        <p>duration: Xs</p>
+      </div>
+    </section>
+    <hr />
+    <section class="crt on">
+      <div>
+        <h1>shelf choice</h1>
+        <button>shelf 1 <small>genre</small></button>
+        <button>shelf 2 <small>genre</small></button>
+      </div>
+    </section>
+    <hr />
+    <section class="crt on">
+      <div>
+        <h1>book <small>name</small></h1>
+        <h2>chapter <small>id</small></h2>
+      </div>
+    </section>
+    <hr />
+    <section class="crt on">
+      <div>
+        <h1>summary <small>victory | defeat</small></h2>
+      </div>
+    </section>
+    <hr />
+  </body>
+
+</html>

@@ -14,7 +14,8 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(calc((var(--scale) * var(--size) * var(--x)) - 50%), calc((var(--scale) * var(--size) * var(--y)) - 50%));
+  /*transform: translate(calc((var(--scale) * var(--size) * var(--x)) - 50%), calc((var(--scale) * var(--size) * var(--y)) - 50%));*/
+  transform: translate(-50%, -50%);
   pointer-events: none;
   overflow: hidden;
 }
