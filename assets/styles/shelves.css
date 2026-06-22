@@ -4,6 +4,7 @@
   --size: 256px;
   --scale: 3;
   position: relative;
+  overflow: hidden;
   background: url(../images/library.png ) repeat center / calc(var(--scale) * var(--size));
   image-rendering: pixelated;
 }
