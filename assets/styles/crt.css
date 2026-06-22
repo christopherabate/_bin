@@ -51,7 +51,7 @@
   initial-value: 0%;
 }
 
-.crt.on::before {
+.crt.active::before {
   --crt-x: 100%;
   --crt-y: 100%;
 }
@@ -80,7 +80,7 @@
   overflow: hidden;
 }
 
-.crt.on::after {
+.crt.active::after {
   --opacity: .2;
   background: 
     /* scanlines */ linear-gradient(to bottom, transparent 50%, rgb(0 0 0 / var(--opacity)) 50%) repeat 0 0 / 100% 2px;

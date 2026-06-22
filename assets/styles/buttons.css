@@ -14,14 +14,9 @@ button {
     0 calc(-1 * var(--px)) color-mix(in srgb, var(--color), black 10%),
     calc(1 * var(--px)) 0 color-mix(in srgb, var(--color), black 10%),
     calc(-1 * var(--px)) 0 color-mix(in srgb, var(--color), black 10%),
-    0 calc(3 * var(--px)) color-mix(in srgb, var(--color), black 50%),
-    calc(1 * var(--px)) calc(2 * var(--px)) color-mix(in srgb, var(--color), black 50%),
-    calc(-1 * var(--px)) calc(2 * var(--px)) color-mix(in srgb, var(--color), black 50%),
-    0 calc(4 * var(--px)) rgb(from var(--color) r g b / .1),
-    calc(1 * var(--px)) calc(3 * var(--px)) rgb(from var(--color) r g b / .1),
-    calc(-1 * var(--px)) calc(3 * var(--px)) rgb(from var(--color) r g b / .1),
-    calc(2 * var(--px)) calc(1 * var(--px)) rgb(from var(--color) r g b / .1),
-    calc(-2 * var(--px)) calc(1 * var(--px)) rgb(from var(--color) r g b / .1),
+    0 calc(2 * var(--px)) color-mix(in srgb, var(--color), black 50%),
+    calc(1 * var(--px)) calc(1 * var(--px)) color-mix(in srgb, var(--color), black 50%),
+    calc(-1 * var(--px)) calc(1 * var(--px)) color-mix(in srgb, var(--color), black 50%),
     inset 0 calc(1 * var(--px)) color-mix(in srgb, var(--color), white 50%);
   cursor: pointer;
 }
@@ -29,21 +24,12 @@ button {
 button:not(:disabled):hover,
 button:not(:disabled):focus {
   transform: translateY(calc(1 * var(--px)));
-  background-color: var(--color);
   box-shadow:
     0 calc(1 * var(--px)) color-mix(in srgb, var(--color), black 10%),
     0 calc(-1 * var(--px)) color-mix(in srgb, var(--color), black 10%),
     calc(1 * var(--px)) 0 color-mix(in srgb, var(--color), black 10%),
     calc(-1 * var(--px)) 0 color-mix(in srgb, var(--color), black 10%),
-    0 calc(2 * var(--px)) color-mix(in srgb, var(--color), black 50%),
-    calc(1 * var(--px)) calc(1 * var(--px)) color-mix(in srgb, var(--color), black 50%),
-    calc(-1 * var(--px)) calc(1 * var(--px)) color-mix(in srgb, var(--color), black 50%),
-    0 calc(3 * var(--px)) rgb(from var(--color) r g b / .1),
-    calc(1 * var(--px)) calc(2 * var(--px)) rgb(from var(--color) r g b / .1),
-    calc(-1 * var(--px)) calc(2 * var(--px)) rgb(from var(--color) r g b / .1),
-    calc(2 * var(--px)) calc(1/2 * var(--px)) rgb(from var(--color) r g b / .1),
-    calc(-2 * var(--px)) calc(1/2 * var(--px)) rgb(from var(--color) r g b / .1),
-    inset 0 calc(1 * var(--px)) color-mix(in srgb, var(--color), white 20%);
+    inset 0 calc(1 * var(--px)) color-mix(in srgb, var(--color), white 50%);
   cursor: pointer;
 }
 

@@ -7,15 +7,20 @@
 @import "shelves.css";
 
 body  {
+  min-height: 100dvh;
   color: var(--foreground);
   background-color: var(--background);
   font-family: HelvetiPixel;
   font-size: 2rem;
 }
 
+:focus-visible {
+  outline-width: var(--pixel);
+}
+
 h1 {
   font-family: TimesNewPixel;
-  font-size: 5rem;
+  font-size: 6vw;
 }
 
 h2 {
@@ -49,6 +54,12 @@ h2 {
   100% { transform: translate(-50%, -50%); }
 }
 
+/* @keyframes shelf {
+  0% { left: calc(-1 * (var(--scale) * var(--size) * var(--x)) + 50%); top:calc(-1 * (var(--scale) * var(--size) * var(--y)) + 50%); }
+  50% { left: 50%; top: calc(-1 * (var(--scale) * var(--size) * var(--y)) + 50%); }
+  100% { left: 50%; top: 50%; }
+}
+ */
 @keyframes turn-on {
   0% { --crt-x: 0; --crt-y: 0; }
   50% { --crt-x: .5%; --crt-y: .5%; }
@@ -77,4 +88,10 @@ h2 {
 @keyframes glitch {
   from { text-shadow: var(--glitch); }
   to { text-shadow: var(--glitch-animated); }
+}
+
+.library {
+  height: 100dvh;
+  background: var(--background) url(../images/library.png ) no-repeat center / contain;
+  image-rendering: pixelated;
 }

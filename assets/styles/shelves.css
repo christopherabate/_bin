@@ -4,8 +4,7 @@
   --size: 256px;
   --scale: 3;
   position: relative;
-  overflow: hidden;
-  background: url(../images/library.png ) repeat center / calc(var(--scale) * var(--size));
+  background: url(../images/shelves.png ) repeat center / calc(var(--scale) * var(--size));
   image-rendering: pixelated;
 }
 
@@ -16,9 +15,9 @@
   content: var(--shelf);
   position: absolute;
   left: 50%;
-  top: 10%;
-  /*transform: translate(calc((var(--scale) * var(--size) * var(--x)) - 50%), calc((var(--scale) * var(--size) * var(--y)) - 50%));*/
+  top: 50%;
   transform: translate(-50%, -50%);
+  will-change: transform;
   pointer-events: none;
   overflow: hidden;
   font-family: NESPixel;
