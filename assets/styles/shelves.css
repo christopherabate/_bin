@@ -1,4 +1,4 @@
-.library {
+.shelves {
   --x: -5;
   --y: -3;
   --size: 256px;
@@ -8,14 +8,26 @@
   image-rendering: pixelated;
 }
 
-.library.active::after {
+.shelves.active::after {
   --shelf: "Shelf";
+  --background: #2e1f1d;
+  --border: #27181b;
   content: var(--shelf);
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 10%;
   /*transform: translate(calc((var(--scale) * var(--size) * var(--x)) - 50%), calc((var(--scale) * var(--size) * var(--y)) - 50%));*/
   transform: translate(-50%, -50%);
   pointer-events: none;
   overflow: hidden;
+  font-family: NESPixel;
+  font-size: 2rem;
+  background-color: var(--background);
+  padding: 0 calc(4 * var(--pixel));
+  text-shadow: none;
+  box-shadow:
+    calc(1 * var(--pixel)) 0 var(--border),
+    calc(-1 * var(--pixel)) 0 var(--border),
+    0 calc(1 * var(--pixel)) var(--border),
+    0 calc(-1 * var(--pixel)) var(--border);
 }

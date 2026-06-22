@@ -4,7 +4,7 @@
 
 @import "buttons.css";
 @import "crt.css";
-@import "library.css";
+@import "shelves.css";
 
 body  {
   color: var(--foreground);
@@ -33,11 +33,11 @@ h2 {
   .crt.active::after { animation: scanlines calc(1s / 12) linear infinite; }
   .crt.noise::after { animation: noise calc(1s / 6) steps(3) infinite; }
   .glitch { animation: glitch calc(1s / 12) infinite alternate; }
-  .library.active { animation: library 5s cubic-bezier(0.9, 0, 0.1, 1) forwards; }
-  .library.active::after { animation: shelf 5s cubic-bezier(0.9, 0, 0.1, 1) forwards; }
+  .shelves.active { animation: shelves 5s cubic-bezier(0.9, 0, 0.1, 1) forwards; }
+  .shelves.active::after { animation: shelf 5s cubic-bezier(0.9, 0, 0.1, 1) forwards; }
 }
 
-@keyframes library {
+@keyframes shelves {
   0% { background-position: 50% 50%; }
   50% { background-position: calc(50% + (var(--scale) * var(--size) * var(--x))) 50%; }
   100% { background-position: calc(50% + (var(--scale) * var(--size) * var(--x))) calc(50% + (var(--scale) * var(--size) * var(--y))); }
